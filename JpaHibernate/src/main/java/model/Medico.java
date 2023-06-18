@@ -15,7 +15,8 @@ public class Medico extends Funcionario {
     @Column(name = "numero_crm", nullable = false, length = 11)
     private String numeroCrm;
     @Column(name = "uf_crm", nullable = false)
-    private String ufCrm;
+    @OneToOne
+    private Uf ufCrm;
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "medico_especialidade",
             joinColumns = @JoinColumn(name = "medico_id"),
@@ -24,7 +25,7 @@ public class Medico extends Funcionario {
 
     public Medico(){}
 
-    public Medico(Integer matricula, Integer numeroRg, String orgaoExpedidorRg, Uf uf, LocalDate dataAdmissao, String email, List<String> telefones, String numeroCrm, String ufCrm, List<Especialidade> especialidades) {
+    public Medico(Integer matricula, Integer numeroRg, String orgaoExpedidorRg, Uf uf, LocalDate dataAdmissao, String email, List<Telefone> telefones, String numeroCrm, Uf ufCrm, List<Especialidade> especialidades) {
         super(matricula, numeroRg, orgaoExpedidorRg, uf, dataAdmissao, email, telefones);
         this.numeroCrm = numeroCrm;
         this.ufCrm = ufCrm;
@@ -39,11 +40,11 @@ public class Medico extends Funcionario {
         this.numeroCrm = numeroCrm;
     }
 
-    public String getUfCrm() {
+    public Uf getUfCrm() {
         return ufCrm;
     }
 
-    public void setUfCrm(String ufCrm) {
+    public void setUfCrm(Uf ufCrm) {
         this.ufCrm = ufCrm;
     }
 
