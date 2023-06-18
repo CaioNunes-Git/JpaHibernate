@@ -28,13 +28,14 @@ public class Funcionario {
     private LocalDate dataAdmissao;
     @Column(length = 255)
     private String email;
-    @OneToMany
-    @ElementCollection @Column(length = 15)
-    private List<String> telefones = new ArrayList<>();
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "telefone_id")
+    private List<Telefone> telefones = new ArrayList<>();
 
     public Funcionario(){}
 
-    public Funcionario(Integer matricula, Integer numeroRg, String orgaoExpedidorRg, Uf uf, LocalDate dataAdmissao, String email, List<String> telefones) {
+    public Funcionario(Integer matricula, Integer numeroRg, String orgaoExpedidorRg, Uf uf, LocalDate dataAdmissao, String email, List<Telefone> telefones) {
         this.matricula = matricula;
         this.numeroRg = numeroRg;
         this.orgaoExpedidorRg = orgaoExpedidorRg;
@@ -92,11 +93,11 @@ public class Funcionario {
         this.email = email;
     }
 
-    public List<String> getTelefones() {
+    public List<Telefone> getTelefones() {
         return telefones;
     }
 
-    public void setTelefone(String telefone) {
+    public void setTelefone(Telefone telefone) {
         telefones.add(telefone);
     }
 }
