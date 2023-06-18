@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "", uniqueConstraints = {
+@Table(name = "medico", uniqueConstraints = {
         @UniqueConstraint(columnNames = {"numero_crm", "uf_crm"})
 })
 @DiscriminatorValue("medico")
