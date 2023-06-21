@@ -20,6 +20,11 @@
             <version>6.2.4.Final</version>
             <type>pom</type>
         </dependency>
+        <dependency>
+            <groupId>org.hibernate.orm</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>6.1.7.Final</version>
+        </dependency>
 
     </dependencies>
 </project>
